@@ -4,7 +4,7 @@ import { Briefcase, Calendar } from "lucide-react";
 const experiences = [
   {
     title: "WordPress Developer & Support Developer",
-    company: "BeSoshial AZ",
+    company: "BeSoshial",
     period: "مارس 2025 – الآن",
     description: "تطوير وصيانة مواقع ووردبريس، تقديم الدعم الفني واستكشاف الأخطاء، تحسين سرعة واستقرار المواقع وإدارة التحديثات والإضافات",
     links: ["pi-dubai.com", "pipower.ae"],
