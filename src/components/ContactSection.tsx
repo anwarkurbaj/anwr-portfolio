@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
-
+import { FaWhatsapp } from "react-icons/fa";
 export default function ContactSection() {
   return (
     <section id="contact" className="py-24 px-6">
@@ -28,9 +28,9 @@ export default function ContactSection() {
         >
           {[
             { icon: Mail, label: "البريد الإلكتروني", value: "anwrkurbaj@gmail.com", href: "mailto:anwrkurbaj@gmail.com" },
-            { icon: Phone, label: "الهاتف", value: "+963 99 626 0127", href: "tel:+963996260127" },
+            { icon: FaWhatsapp, label: "واتس اب ", value: "+963 99 626 0127",  href: "https://wa.me/963996260127" },
             { icon: MapPin, label: "الموقع", value: "السويداء، سوريا", href: null },
-            { icon: Linkedin, label: "LinkedIn", value: "الملف الشخصي", href: "https://linkedin.com" },
+            { icon: Linkedin, label: "LinkedIn", value: "الملف الشخصي", href: "https://www.linkedin.com/in/anwar-kurbaj-8749873a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
           ].map((c, i) => (
             <motion.div
               key={i}
