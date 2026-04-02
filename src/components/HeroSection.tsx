@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useTranslation } from "react-i18next";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,6 +15,8 @@ const stagger = {
 };
 
 export default function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <img
@@ -32,34 +35,34 @@ export default function HeroSection() {
       <div className="relative z-10 text-center px-6 max-w-4xl">
         <motion.div initial="hidden" animate="visible" variants={stagger}>
           <motion.p variants={fadeUp} custom={0} className="font-mono text-primary text-sm md:text-base tracking-widest mb-4">
-            {"< مرحباً بالعالم />"}
+            {"< " + t("hero.greeting") + " />"}
           </motion.p>
           
           <motion.h1 variants={fadeUp} custom={1} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight">
-            أنور <span className="text-gradient-primary">كرباج</span>
+            Anwar <span className="text-gradient-primary">Karbaj</span>
           </motion.h1>
           
           <motion.div variants={fadeUp} custom={2} className="flex items-center justify-center gap-2 mb-8">
             <span className="h-px w-12 bg-gradient-primary" />
             <h2 className="text-xl md:text-2xl font-light text-muted-foreground">
-              Software Engineer
+              {t("hero.role")}
             </h2>
             <span className="h-px w-12 bg-gradient-primary" />
           </motion.div>
 
           <motion.p variants={fadeUp} custom={3} className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            مهندس برمجيات شغوف بتطوير تطبيقات الويب والموبايل، خبرة في Flutter و WordPress والدعم الفني وتدريب البرمجة
+            {t("hero.description")}
           </motion.p>
 
           <motion.div variants={fadeUp} custom={4} className="flex flex-wrap justify-center gap-4">
             <a href="#experience" className="px-8 py-3 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity">
-              الخبرات
+              {t("experience.title")}
             </a>
             <a href="#skills" className="px-8 py-3 rounded-lg border border-primary/30 text-primary hover:border-primary/60 transition-colors">
-              المهارات
+              {t("skills.title")}
             </a>
             <a href="#contact" className="px-8 py-3 rounded-lg border border-accent/30 text-accent hover:border-accent/60 transition-colors">
-              تواصل معي
+              {t("hero.contact")}
             </a>
           </motion.div>
 

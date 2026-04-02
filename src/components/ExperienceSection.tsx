@@ -1,41 +1,44 @@
 import { motion } from "framer-motion";
 import { Briefcase, Calendar } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const experiences = [
   {
-    title: "WordPress Developer & Support Developer",
-    company: "BeSoshial",
-    period: "مارس 2025 – الآن",
-    description: "تطوير وصيانة مواقع ووردبريس، تقديم الدعم الفني واستكشاف الأخطاء، تحسين سرعة واستقرار المواقع وإدارة التحديثات والإضافات",
+    titleKey: "experience.1.title",
+    companyKey: "experience.1.company",
+    periodKey: "experience.1.period",
+    descriptionKey: "experience.1.description",
     links: ["pi-dubai.com", "pipower.ae"],
   },
   {
-    title: "Technical Support",
-    company: "مدرسة ميس الخاصة – السويداء",
-    period: "يناير 2025 – الآن",
-    description: "تقديم الدعم التقني للكادر والطلاب، المساعدة في إعداد وصيانة أنظمة التعلم الرقمي",
+    titleKey: "experience.2.title",
+    companyKey: "experience.2.company",
+    periodKey: "experience.2.period",
+    descriptionKey: "experience.2.description",
   },
   {
-    title: "Flutter Developer Intern",
-    company: "شركة دربني",
-    period: "2024 – 6 أشهر",
-    description: "تطوير تطبيقات الموبايل باستخدام Flutter، تصميم واجهات مستخدم بديهية، ربط APIs وتحسين أداء التطبيقات",
+    titleKey: "experience.3.title",
+    companyKey: "experience.3.company",
+    periodKey: "experience.3.period",
+    descriptionKey: "experience.3.description",
   },
   {
-    title: "مدرب برمجة C++ والدعم الفني",
-    company: "شركة عونك",
-    period: "2021 – 2024 (سنة)",
-    description: "تدريس أساسيات برمجة C++ من متغيرات وحلقات وشروط ودوال، متابعة تقدم الطلاب وتقديم ملاحظات شخصية، الدعم الفني لحل مشاكل البرمجيات والعتاد",
+    titleKey: "experience.4.title",
+    companyKey: "experience.4.company",
+    periodKey: "experience.4.period",
+    descriptionKey: "experience.4.description",
   },
   {
-    title: "Technical Support",
-    company: "المدرسة الافتراضية السورية الذكية",
-    period: "مارس 2022 – 2023",
-    description: "تطوير وصيانة تطبيقات Flutter، تصميم واجهات المستخدم والميزات للتطبيقات متعددة المنصات، اختبار شامل وتصحيح الأخطاء",
+    titleKey: "experience.5.title",
+    companyKey: "experience.5.company",
+    periodKey: "experience.5.period",
+    descriptionKey: "experience.5.description",
   },
 ];
 
 export default function ExperienceSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="experience" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -45,9 +48,9 @@ export default function ExperienceSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm tracking-widest">{"// الخبرات"}</span>
+          <span className="font-mono text-primary text-sm tracking-widest">// {t("experience.subtitle")}</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-2">
-            مسيرتي <span className="text-gradient-primary">المهنية</span>
+            {t("experience.title")} <span className="text-gradient-primary">{t("experience.subtitle")}</span>
           </h2>
         </motion.div>
 
@@ -70,16 +73,16 @@ export default function ExperienceSection() {
               <div className="bg-gradient-card rounded-xl p-6 border border-border hover:border-primary/30 transition-colors group">
                 <div className="flex items-center gap-2 text-primary font-mono text-xs mb-2">
                   <Calendar className="w-3 h-3" />
-                  {exp.period}
+                  {t(exp.periodKey)}
                 </div>
                 <h3 className="text-lg font-bold text-foreground group-hover:text-gradient-primary transition-colors">
-                  {exp.title}
+                  {t(exp.titleKey)}
                 </h3>
                 <p className="text-primary/80 text-sm font-medium flex items-center gap-1 mt-1">
                   <Briefcase className="w-3 h-3" />
-                  {exp.company}
+                  {t(exp.companyKey)}
                 </p>
-                <p className="text-muted-foreground text-sm mt-3 leading-relaxed">{exp.description}</p>
+                <p className="text-muted-foreground text-sm mt-3 leading-relaxed">{t(exp.descriptionKey)}</p>
                 {exp.links && (
                   <div className="flex gap-2 mt-3 flex-wrap">
                     {exp.links.map((l) => (

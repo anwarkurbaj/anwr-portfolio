@@ -1,7 +1,17 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+
+const contactItems = [
+  { icon: Mail, labelKey: "contact.email.label", value: "anwrkurbaj@gmail.com", href: "mailto:anwrkurbaj@gmail.com" },
+  { icon: FaWhatsapp, labelKey: "contact.whatsapp.label", value: "+963 99 626 0127", href: "https://wa.me/963996260127" },
+  { icon: MapPin, labelKey: "contact.location.label", value: "السويداء، سوريا", href: null },
+  { icon: Linkedin, labelKey: "contact.linkedin.label", value: "linkedin.com/in/anwar-kurbaj", href: "https://www.linkedin.com/in/anwar-kurbaj-8749873a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" }
+];
 export default function ContactSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-3xl mx-auto text-center">
@@ -10,12 +20,12 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="font-mono text-primary text-sm tracking-widest">{"// تواصل معي"}</span>
+          <span className="font-mono text-primary text-sm tracking-widest">// {t("contact.subtitle")}</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4">
-            لنبني شيئاً <span className="text-gradient-primary">مذهلاً</span> معاً
+            {t("contact.title")} <span className="text-gradient-primary">{t("contact.subtitle")}</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-12">
-            مستعد دائماً لفرص جديدة ومشاريع مثيرة. لا تتردد بالتواصل!
+            {t("contact.description")}
           </p>
         </motion.div>
 
@@ -26,12 +36,7 @@ export default function ContactSection() {
           transition={{ delay: 0.2 }}
           className="grid sm:grid-cols-2 gap-4"
         >
-          {[
-            { icon: Mail, label: "البريد الإلكتروني", value: "anwrkurbaj@gmail.com", href: "mailto:anwrkurbaj@gmail.com" },
-            { icon: FaWhatsapp, label: "واتس اب ", value: "+963 99 626 0127",  href: "https://wa.me/963996260127" },
-            { icon: MapPin, label: "الموقع", value: "السويداء، سوريا", href: null },
-            { icon: Linkedin, label: "LinkedIn", value: "الملف الشخصي", href: "https://www.linkedin.com/in/anwar-kurbaj-8749873a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-          ].map((c, i) => (
+          {contactItems.map((c, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -43,13 +48,13 @@ export default function ContactSection() {
                 <a href={c.href} target="_blank" rel="noopener noreferrer"
                   className="block bg-gradient-card rounded-xl p-5 border border-border hover:border-primary/30 transition-all group">
                   <c.icon className="w-5 h-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                  <p className="text-xs text-muted-foreground mb-1">{c.label}</p>
+                  <p className="text-xs text-muted-foreground mb-1">{t(c.labelKey)}</p>
                   <p className="font-mono text-sm text-foreground">{c.value}</p>
                 </a>
               ) : (
                 <div className="block bg-gradient-card rounded-xl p-5 border border-border">
                   <c.icon className="w-5 h-5 text-primary mx-auto mb-2" />
-                  <p className="text-xs text-muted-foreground mb-1">{c.label}</p>
+                  <p className="text-xs text-muted-foreground mb-1">{t(c.labelKey)}</p>
                   <p className="font-mono text-sm text-foreground">{c.value}</p>
                 </div>
               )}
@@ -64,9 +69,10 @@ export default function ContactSection() {
           transition={{ delay: 0.5 }}
           className="mt-16 text-muted-foreground text-sm font-mono"
         >
-          {"< صُنع بشغف وكود />"} — أنور كرباج © {new Date().getFullYear()}
+          {t("contact.signature", { year: new Date().getFullYear() })}
         </motion.p>
       </div>
     </section>
   );
 }
+
